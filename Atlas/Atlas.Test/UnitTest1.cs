@@ -1,3 +1,4 @@
+using Atlas.Lib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Atlas.Test

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Atlas
+namespace Atlas.Lib
 {
     public class Class1
     {
