@@ -72,3 +72,43 @@ you would go to this location to find its event configuration for the given Atla
 
 This structure pertains to a single Atlas configuration (for a specific tenant, application, and so on).  Each individual custom
 Atlas config will have a separate copy of this structure.
+
+# Persistence of Events
+As events are received by Atlas, it will be generally necessary to persist them.  To do so in an efficient manner, event sourcing
+will be used.
+
+As events come in, Atlas will keep track of which events are related to which other events.  As a given user uses our system to
+perform a certain task, many different events may be raised and routed in sequence to perform this task.  Together, this sequence of
+events will implement a given workflow.  However other users may go through the same workflow, raising the same events, and the same
+user may do the same thing multiple times.  Atlas will keep track of each sequence of events separately from each other sequence.
+
+This will be comparable to streaming off of YouTube.  YouTube has a list of videos, and it is streaming them to different users.
+Each video has a different set of data that is stream.  This is similar to a workflow in Atlas.  Each time a user streams that video,
+this is similar to a sequence of related events in Atlas.  Different users may stream the same video at the same time, and the same
+user may revisit the same video multiple times, but YouTube keeps track of each stream separately.  This is similar to Atlas keeping
+track of each sequence of events separately.
+
+To persist events, Atlas will use event sourcing, but it will break up the event sourcing through the use of snapshots.  In this way,
+Atlas will persist a sequence of events similarly to how a video is streamed.
+
+When a video is streamed, it starts with all of the data for a given frame - all of the visual and auidal data needed to present that
+frame.  But then as it goes from frame to frame, it doesn't just keep sending all of that data separately for each frame.  Instead it
+just sends the deltas - the visual and audial data that actually changed since the last frame.  As it moves from frame to frame,
+instead of sending a full sheet of data, it just keeps sending the changes since the last frame, over and over again.  As the client
+machine receives this data, it starts with the original frame - which had a complete set of data - and keeps applying these deltas on
+top of each other, to know what to present at any given point in time.
+
+As time goes on though, this can start working more and more poorly.  To fix that, video streams will occasionally send a frame with
+a full set of data - just like they did with the first frame initially - instead of sending a delta.  Just like at the beginning, the
+client machine can take this new frame and use it by itself to present that moment of the stream to the user.  This new frame is a
+complete, self-contained snapshot of the present moment in the video stream.  It is called a keyframe.
+
+As the stream continues, it will go back to sending deltas, but the client machine will always apply this new set of deltas to the
+most recent snapshot, the most recent keyframe.  The client machine will always disregard what had come before that last keyframe.
+And as time goes on, the stream will send a series of deltas, then send a new keyframe, then send a series of deltas, then a new
+keyframe, and so on until the stream is ended.  In this way, the video stream is compression and efficient, through sending the
+deltas, but it is also reliable and so on, through occassionally sending the keyframes.
+
+Atlas will persist its events in the same exact manner.  It will use event sourcing, which the same as when video streams send a
+series of deltas.  It will also use "Snapshots", which are directly analogous to keyframes.  (In Atlas's case though, the Snapshots
+may, at least in some cases, be less of a reliability mechanism and more of a read-efficiency mechanism.)
