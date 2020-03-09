@@ -8,7 +8,7 @@ namespace Atlas
         static void Main(string[] args)
         {
             new Class1().Succeed();
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("Hello, WorldVerify!");
         }
     }
 }
