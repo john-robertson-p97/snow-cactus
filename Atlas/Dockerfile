@@ -1,19 +1,19 @@
-FROM microsoft/dotnet:2.0-runtime AS base
-WORKDIR /app
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+WORKDIR /source
 
-FROM microsoft/dotnet:2.0-sdk AS build
-WORKDIR /src
+# copy csproj and restore as distinct layers
 COPY *.sln ./
-COPY . /Atlas/Atlas.csproj /Atlas/
+COPY ./Atlas/Atlas.csproj ./Atlas/
+COPY ./Atlas.Test/Atlas.Test.csproj ./Atlas.Test/
+COPY ./Atlas.Lib/Atlas.Lib.csproj ./Atlas.Lib/
 RUN dotnet restore
+
+# copy and publish app and libraries
 COPY . .
-WORKDIR /src/
 RUN dotnet build -c Release -o /app
 
-FROM build AS publish
-RUN dotnet publish -c Release -o /app
-
-FROM base AS final
+# final stage/image
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1
 WORKDIR /app
-COPY --from=publish /app/ .
+COPY --from=build /app .
 ENTRYPOINT ["dotnet", "Atlas.dll"]
