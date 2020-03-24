@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
@@ -13,7 +13,7 @@ COPY . .
 RUN dotnet build -c Release -o /app
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/core/runtime:2.2
+FROM mcr.microsoft.com/dotnet/core/runtime:2.1
 WORKDIR /app
 COPY --from=build /app .
 ENTRYPOINT ["dotnet", "Atlas.dll"]
