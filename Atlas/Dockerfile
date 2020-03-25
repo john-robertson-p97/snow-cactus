@@ -1,19 +1,21 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build
-WORKDIR /source
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-# copy csproj and restore as distinct layers
-COPY *.sln ./
-COPY ./Atlas/Atlas.csproj ./Atlas/
-COPY ./Atlas.Test/Atlas.Test.csproj ./Atlas.Test/
-COPY ./Atlas.Lib/Atlas.Lib.csproj ./Atlas.Lib/
-RUN dotnet restore
-
-# copy and publish app and libraries
-COPY . .
-RUN dotnet build -c Release -o /app
-
-# final stage/image
-FROM mcr.microsoft.com/dotnet/core/runtime:2.1
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.1-stretch-slim AS base
 WORKDIR /app
-COPY --from=build /app .
-ENTRYPOINT ["dotnet", "Atlas.dll"]
+EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch AS build
+WORKDIR /src
+COPY ["AtlasSite/AtlasSite.csproj", "AtlasSite/"]
+RUN dotnet restore "AtlasSite/AtlasSite.csproj"
+COPY . .
+WORKDIR "/src/AtlasSite"
+RUN dotnet build "AtlasSite.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "AtlasSite.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "AtlasSite.dll"]
