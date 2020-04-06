@@ -5,11 +5,9 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas.Test", "Atlas.Test\Atlas.Test.csproj", "{92803041-288C-446F-B793-4868F4476704}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas.Lib", "Atlas.Lib\Atlas.Lib.csproj", "{6A9EFE5C-C8AB-4D40-903E-ADB084A9396E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Lib", "Atlas.Lib\Atlas.Lib.csproj", "{6A9EFE5C-C8AB-4D40-903E-ADB084A9396E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas", "Atlas\Atlas.csproj", "{5B8B96CC-34D7-4B38-98FA-400FC6F96360}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtlasSite", "AtlasSite\AtlasSite.csproj", "{06B13B88-F742-4B8A-AF5C-893E530C6288}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas", "Atlas\Atlas.csproj", "{5B8B96CC-34D7-4B38-98FA-400FC6F96360}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{5B8B96CC-34D7-4B38-98FA-400FC6F96360}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B8B96CC-34D7-4B38-98FA-400FC6F96360}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B8B96CC-34D7-4B38-98FA-400FC6F96360}.Release|Any CPU.Build.0 = Release|Any CPU
-		{06B13B88-F742-4B8A-AF5C-893E530C6288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06B13B88-F742-4B8A-AF5C-893E530C6288}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06B13B88-F742-4B8A-AF5C-893E530C6288}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06B13B88-F742-4B8A-AF5C-893E530C6288}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

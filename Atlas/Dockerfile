@@ -1,24 +1,19 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+WORKDIR /source
 
-#Depending on the operating system of the host machines(s) that will build or run the containers, the image specified in the FROM statement may need to be changed.
-#For more information, please see https://aka.ms/containercompat
+# copy csproj and restore as distinct layers
+COPY *.sln ./
+COPY ./Atlas/Atlas.csproj ./Atlas/
+COPY ./Atlas.Test/Atlas.Test.csproj ./Atlas.Test/
+COPY ./Atlas.Lib/Atlas.Lib.csproj ./Atlas.Lib/
+RUN dotnet restore
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.1-nanoserver-1809 AS base
-WORKDIR /app
-EXPOSE 80
-
-FROM mcr.microsoft.com/dotnet/core/sdk:2.1-nanoserver-1809 AS build
-WORKDIR /src
-COPY ["AtlasSite/AtlasSite.csproj", "AtlasSite/"]
-RUN dotnet restore "AtlasSite/AtlasSite.csproj"
+# copy and publish app and libraries
 COPY . .
-WORKDIR "/src/AtlasSite"
-RUN dotnet build "AtlasSite.csproj" -c Release -o /app/build
+RUN dotnet build -c Release -o /app
 
-FROM build AS publish
-RUN dotnet publish "AtlasSite.csproj" -c Release -o /app/publish
-
-FROM base AS final
+# final stage/image
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "AtlasSite.dll"]
+COPY --from=build /app .
+ENTRYPOINT ["dotnet", "Atlas.dll"]
