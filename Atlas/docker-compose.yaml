@@ -1,0 +1,74 @@
+version: '3.4'
+
+services:
+  warehouse-microservice:
+    image: ${DOCKER_REGISTRY-}warehousemicroservice
+    build:
+      context: .
+      dockerfile: Warehouse.Microservice\Dockerfile_Windows
+    ports:
+      - 5000:80
+      
+  display-microservice:
+    image: ${DOCKER_REGISTRY-}displaymicroservice
+    build:
+      context: .
+      dockerfile: Display.Microservice\Dockerfile_Windows
+    ports:
+      - 5001:80
+      
+  cactusmaterialsupplier-microservice:
+    image: ${DOCKER_REGISTRY-}cactusmaterialsupplier.microservice
+    build:
+      context: .
+      dockerfile: CactusMaterialSupplier.Microservice\Dockerfile_Windows
+    ports:
+      - 5002:80
+      
+  cactusbuilder-microservice:
+    image: ${DOCKER_REGISTRY-}cactusbuilder.microservice
+    build:
+      context: .
+      dockerfile: CactusBuilder.Microservice\Dockerfile_Windows
+    ports:
+      - 5003:80
+      
+  atlas-phoenix-microservice:
+    image: ${DOCKER_REGISTRY-}atlas.phoenix.microservice
+    build:
+      context: .
+      dockerfile: Atlas.Phoenix.Microservice\Dockerfile_Windows
+    ports:
+      - 5004:80
+  
+  snowmanmaterialsupplier-microservice:
+    image: ${DOCKER_REGISTRY-}snowmanmaterialsupplier.microservice
+    build:
+      context: .
+      dockerfile: SnowmanMaterialSupplier.Microservice\Dockerfile_Windows
+    ports:
+      - 5005:80
+      
+  snowmanbuilder-microservice:
+    image: ${DOCKER_REGISTRY-}snowmanbuilder.microservice
+    build:
+      context: .
+      dockerfile: SnowmanBuilder.Microservice\Dockerfile_Windows
+    ports:
+      - 5006:80
+      
+  atlas-sapporo-microservice:
+    image: ${DOCKER_REGISTRY-}atlas.sapporo.microservice
+    build:
+      context: .
+      dockerfile: Atlas.Sapporo.Microservice\Dockerfile_Windows
+    ports:
+      - 5007:80
+      
+  atlas-express-microservice:
+    image: ${DOCKER_REGISTRY-}atlas.express.microservice
+    build:
+      context: .
+      dockerfile: Atlas.Express.Microservice\Dockerfile_Windows
+    ports:
+      - 5008:80

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Atlas.Events.Surface\Atlas.Events.Surface.csproj" />
+    <ProjectReference Include="..\Atlas.Express.Lib.Surface\Atlas.Express.Lib.Surface.csproj" />
+  </ItemGroup>
+
+</Project>

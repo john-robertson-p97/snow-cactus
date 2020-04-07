@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SnowmanMaterialSupplier.Lib.Surface\SnowmanMaterialSupplier.Lib.Surface.csproj" />
+    <ProjectReference Include="..\Warehouse.Lib.Surface\Warehouse.Lib.Surface.csproj" />
+  </ItemGroup>
+
+</Project>
