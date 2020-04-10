@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: display-microservice
+  labels:
+    app: display-microservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: display-microservice
+  template:
+    metadata:
+      labels:
+        app: display-microservice
+    spec:
+      containers:
+      - name: display-microservice
+        image: docker.io/p97akita/display-microservice:v1.0.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: display-microservice
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30001
+  selector:
+    app: display-microservice

@@ -1,0 +1,74 @@
+version: '3.4'
+
+services:
+  warehouse-microservice:
+    image: ${DOCKER_REGISTRY-}warehousemicroservice
+    build:
+      context: ..
+      dockerfile: Warehouse.Microservice\Containers\Dockerfile_Windows
+    ports:
+      - 30000:80
+      
+  display-microservice:
+    image: ${DOCKER_REGISTRY-}displaymicroservice
+    build:
+      context: ..
+      dockerfile: Display.Microservice\Containers\Dockerfile_Windows
+    ports:
+      - 30001:80
+      
+  cactusmaterialsupplier-microservice:
+    image: ${DOCKER_REGISTRY-}cactusmaterialsupplier.microservice
+    build:
+      context: ..
+      dockerfile: CactusMaterialSupplier.Microservice\Containers\Dockerfile_Windows
+    ports:
+      - 30002:80
+      
+  cactusbuilder-microservice:
+    image: ${DOCKER_REGISTRY-}cactusbuilder.microservice
+    build:
+      context: ..
+      dockerfile: CactusBuilder.Microservice\Containers\Dockerfile_Windows
+    ports:
+      - 30003:80
+      
+  atlas-phoenix-microservice:
+    image: ${DOCKER_REGISTRY-}atlas.phoenix.microservice
+    build:
+      context: ..
+      dockerfile: Atlas.Phoenix.Microservice\Containers\Dockerfile_Windows
+    ports:
+      - 30004:80
+  
+  snowmanmaterialsupplier-microservice:
+    image: ${DOCKER_REGISTRY-}snowmanmaterialsupplier.microservice
+    build:
+      context: ..
+      dockerfile: SnowmanMaterialSupplier.Microservice\Containers\Dockerfile_Windows
+    ports:
+      - 30005:80
+      
+  snowmanbuilder-microservice:
+    image: ${DOCKER_REGISTRY-}snowmanbuilder.microservice
+    build:
+      context: ..
+      dockerfile: SnowmanBuilder.Microservice\Containers\Dockerfile_Windows
+    ports:
+      - 30006:80
+      
+  atlas-sapporo-microservice:
+    image: ${DOCKER_REGISTRY-}atlas.sapporo.microservice
+    build:
+      context: ..
+      dockerfile: Atlas.Sapporo.Microservice\Containers\Dockerfile_Windows
+    ports:
+      - 30007:80
+      
+  atlas-express-microservice:
+    image: ${DOCKER_REGISTRY-}atlas.express.microservice
+    build:
+      context: ..
+      dockerfile: Atlas.Express.Microservice\Containers\Dockerfile_Windows
+    ports:
+      - 30008:80

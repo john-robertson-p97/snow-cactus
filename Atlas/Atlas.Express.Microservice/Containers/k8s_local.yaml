@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: atlas-express-microservice
+  labels:
+    app: atlas-express-microservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: atlas-express-microservice
+  template:
+    metadata:
+      labels:
+        app: atlas-express-microservice
+    spec:
+      containers:
+      - name: atlas-express-microservice
+        image: atlas-express-microservice
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: atlas-express-microservice
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30008
+  selector:
+    app: atlas-express-microservice
