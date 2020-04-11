@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\P97.Atlas.States.Sapporo.Surface\P97.Atlas.States.Sapporo.Surface.csproj" />
+    <ProjectReference Include="..\P97.Atlas.Surface\P97.Atlas.Surface.csproj" />
+    <ProjectReference Include="..\P97.SnowmanBuilder.Surface\P97.SnowmanBuilder.Surface.csproj" />
+    <ProjectReference Include="..\P97.SnowmanMaterialSupplier.Surface\P97.SnowmanMaterialSupplier.Surface.csproj" />
+  </ItemGroup>
+
+</Project>

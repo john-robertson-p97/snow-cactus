@@ -5,7 +5,7 @@ services:
     image: ${DOCKER_REGISTRY-}warehousemicroservice
     build:
       context: ..
-      dockerfile: Warehouse.Microservice/Containers/Dockerfile_Linux
+      dockerfile: P97.Warehouse.Microservice/Containers/Dockerfile_Linux
     ports:
       - 30000:80
       
@@ -13,7 +13,7 @@ services:
     image: ${DOCKER_REGISTRY-}displaymicroservice
     build:
       context: ..
-      dockerfile: Display.Microservice/Containers/Dockerfile_Linux
+      dockerfile: P97.Display.Microservice/Containers/Dockerfile_Linux
     ports:
       - 30001:80
       
@@ -21,7 +21,7 @@ services:
     image: ${DOCKER_REGISTRY-}cactusmaterialsupplier.microservice
     build:
       context: ..
-      dockerfile: CactusMaterialSupplier.Microservice/Containers/Dockerfile_Linux
+      dockerfile: P97.CactusMaterialSupplier.Microservice/Containers/Dockerfile_Linux
     ports:
       - 30002:80
       
@@ -29,7 +29,7 @@ services:
     image: ${DOCKER_REGISTRY-}cactusbuilder.microservice
     build:
       context: ..
-      dockerfile: CactusBuilder.Microservice/Containers/Dockerfile_Linux
+      dockerfile: P97.CactusBuilder.Microservice/Containers/Dockerfile_Linux
     ports:
       - 30003:80
       
@@ -37,7 +37,7 @@ services:
     image: ${DOCKER_REGISTRY-}atlas.phoenix.microservice
     build:
       context: ..
-      dockerfile: Atlas.Phoenix.Microservice/Containers/Dockerfile_Linux
+      dockerfile: P97.Atlas.States.Phoenix.Microservice/Containers/Dockerfile_Linux
     ports:
       - 30004:80
   
@@ -45,7 +45,7 @@ services:
     image: ${DOCKER_REGISTRY-}snowmanmaterialsupplier.microservice
     build:
       context: ..
-      dockerfile: SnowmanMaterialSupplier.Microservice/Containers/Dockerfile_Linux
+      dockerfile: P97.SnowmanMaterialSupplier.Microservice/Containers/Dockerfile_Linux
     ports:
       - 30005:80
       
@@ -53,7 +53,7 @@ services:
     image: ${DOCKER_REGISTRY-}snowmanbuilder.microservice
     build:
       context: ..
-      dockerfile: SnowmanBuilder.Microservice/Containers/Dockerfile_Linux
+      dockerfile: P97.SnowmanBuilder.Microservice/Containers/Dockerfile_Linux
     ports:
       - 30006:80
       
@@ -61,14 +61,14 @@ services:
     image: ${DOCKER_REGISTRY-}atlas.sapporo.microservice
     build:
       context: ..
-      dockerfile: Atlas.Sapporo.Microservice/Containers/Dockerfile_Linux
+      dockerfile: P97.Atlas.States.Sapporo.Microservice/Containers/Dockerfile_Linux
     ports:
       - 30007:80
       
-  atlas-express-microservice:
-    image: ${DOCKER_REGISTRY-}atlas.express.microservice
+  atlas-deliveryservice-microservice:
+    image: ${DOCKER_REGISTRY-}atlas.deliveryservice.microservice
     build:
       context: ..
-      dockerfile: Atlas.Express.Microservice/Containers/Dockerfile_Linux
+      dockerfile: P97.Atlas.Federation.DeliveryService.Microservice/Containers/Dockerfile_Linux
     ports:
       - 30008:80

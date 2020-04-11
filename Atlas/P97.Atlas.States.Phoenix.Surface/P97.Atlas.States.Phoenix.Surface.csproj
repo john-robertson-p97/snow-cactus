@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>P97.Atlas.States.Phoenix</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\P97.Atlas.Surface\P97.Atlas.Surface.csproj" />
+  </ItemGroup>
+
+</Project>

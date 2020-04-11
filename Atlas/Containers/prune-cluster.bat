@@ -24,5 +24,5 @@ kubectl delete deployment snowmanbuilder-microservice
 kubectl delete service atlas-sapporo-microservice
 kubectl delete deployment atlas-sapporo-microservice
 
-kubectl delete service atlas-express-microservice
-kubectl delete deployment atlas-express-microservice
+kubectl delete service atlas-deliveryservice-microservice
+kubectl delete deployment atlas-deliveryservice-microservice

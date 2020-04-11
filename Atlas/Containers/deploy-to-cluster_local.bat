@@ -8,4 +8,4 @@ kubectl create -f %~dp0..\Atlas.Phoenix.Microservice\Containers\k8s_local.yaml
 kubectl create -f %~dp0..\SnowmanMaterialSupplier.Microservice\Containers\k8s_local.yaml
 kubectl create -f %~dp0..\SnowmanBuilder.Microservice\Containers\k8s_local.yaml
 kubectl create -f %~dp0..\Atlas.Sapporo.Microservice\Containers\k8s_local.yaml
-kubectl create -f %~dp0..\Atlas.Express.Microservice\Containers\k8s_local.yaml
+kubectl create -f %~dp0..\Atlas.DeliveryService.Microservice\Containers\k8s_local.yaml
