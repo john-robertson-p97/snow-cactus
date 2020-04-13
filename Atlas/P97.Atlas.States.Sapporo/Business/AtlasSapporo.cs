@@ -1,4 +1,5 @@
 ﻿using P97.Atlas.States.Sapporo.Proxy;
+using P97.Atlas.States.Sapporo.Surface.Definitions;
 using P97.Atlas.States.Sapporo.Surface.Interfaces;
 using P97.Atlas.Surface.Dtos;
 
@@ -18,9 +19,9 @@ namespace P97.Atlas.States.Sapporo.Business
 
         public void HandleEvent(EventDto evt)
         {
-            if (evt.EventType == "materialsShipped")
+            if (evt.EventType == EventTypes.MaterialsShipped)
             {
-                if (evt.Context == "BuildSnowman")
+                if (evt.Context == ContextTypes.BuildSnowman)
                 {
                     _snowmanBuilderAdapter.BuildSnowman();
                 }
@@ -35,7 +36,7 @@ namespace P97.Atlas.States.Sapporo.Business
             }
         }
 
-        public void StartBuildSnowmanWorkflow() => _snowmanMaterialSupplierAdapter.SupplyMaterials("BuildSnowman");
+        public void StartBuildSnowmanWorkflow() => _snowmanMaterialSupplierAdapter.SupplyMaterials(ContextTypes.BuildSnowman);
 
         private readonly ISnowmanMaterialSupplierAdapter _snowmanMaterialSupplierAdapter;
         private readonly ISnowmanBuilderAdapter _snowmanBuilderAdapter;

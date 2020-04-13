@@ -1,4 +1,5 @@
-﻿using P97.SnowmanMaterialSupplier.Microservice.Surface.Definitions;
+﻿using P97.Atlas.Surface.Definitions;
+using P97.SnowmanMaterialSupplier.Microservice.Surface.Definitions;
 using System.Net.Http;
 using System.Text;
 
@@ -16,7 +17,7 @@ namespace P97.Atlas.States.Sapporo.Proxy
         {
             _httpClient.PostAsync(
                 _url,
-                new StringContent($"\"{context}\"", Encoding.UTF8, "application/json")
+                new StringContent($"\"{context}\"", Encoding.UTF8, MediaTypes.ApplicationJson)
             );
         }
 

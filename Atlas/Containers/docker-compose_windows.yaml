@@ -21,7 +21,7 @@ services:
     image: ${DOCKER_REGISTRY-}cactusmaterialsupplier.microservice
     build:
       context: ..
-      dockerfile: P97.CactusMaterialSupplier.Microservice\Containers\Dockerfile_Windows
+      dockerfile: P97.CactusMaterialSupplier.Microservice.AtlasPhoenix\Containers\Dockerfile_Windows
     ports:
       - 30002:80
       
@@ -29,7 +29,7 @@ services:
     image: ${DOCKER_REGISTRY-}cactusbuilder.microservice
     build:
       context: ..
-      dockerfile: P97.CactusBuilder.Microservice\Containers\Dockerfile_Windows
+      dockerfile: P97.CactusBuilder.Microservice.AtlasPhoenix\Containers\Dockerfile_Windows
     ports:
       - 30003:80
       
@@ -45,7 +45,7 @@ services:
     image: ${DOCKER_REGISTRY-}snowmanmaterialsupplier.microservice
     build:
       context: ..
-      dockerfile: P97.SnowmanMaterialSupplier.Microservice\Containers\Dockerfile_Windows
+      dockerfile: P97.SnowmanMaterialSupplier.Microservice.AtlasSapporo\Containers\Dockerfile_Windows
     ports:
       - 30005:80
       
@@ -53,7 +53,7 @@ services:
     image: ${DOCKER_REGISTRY-}snowmanbuilder.microservice
     build:
       context: ..
-      dockerfile: P97.SnowmanBuilder.Microservice\Containers\Dockerfile_Windows
+      dockerfile: P97.SnowmanBuilder.Microservice.AtlasSapporo\Containers\Dockerfile_Windows
     ports:
       - 30006:80
       

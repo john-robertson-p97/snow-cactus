@@ -3,7 +3,7 @@
 namespace P97.Display
 {
     /// <summary>
-    ///     The overall factory class for the <see cref="P97.Display"/> project.
+    ///     The overall factory class for the <see cref="Display"/> project.
     /// </summary>
     public sealed class ProjectFactory
     {

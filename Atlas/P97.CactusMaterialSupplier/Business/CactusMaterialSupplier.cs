@@ -1,23 +1,16 @@
-﻿using P97.CactusMaterialSupplier.Business.Surface.Interfaces;
-using P97.CactusMaterialSupplier.Proxy;
+﻿using P97.Atlas.States.Phoenix.Adapters;
+using P97.Atlas.Surface.Dtos;
+using P97.CactusMaterialSupplier.Business.Surface.Interfaces;
+using P97.Warehouse.Adapter.Surface.Interfaces;
 
 namespace P97.CactusMaterialSupplier.Business
 {
     internal sealed class CactusMaterialSupplier : ICactusMaterialSupplier
     {
-        internal CactusMaterialSupplier(IWarehouseAdapter warehouseAdapter, IAtlasPhoenixAdapter atlasPhoenixAdapter)
-        {
-            _warehouseAdapter = warehouseAdapter;
-            _atlasPhoenixAdapter = atlasPhoenixAdapter;
-        }
+        internal CactusMaterialSupplier(IWarehouseAdapter warehouseAdapter) => _warehouseAdapter = warehouseAdapter;
 
-        public void SupplyMaterials()
-        {
-            _warehouseAdapter.SupplyMaterials("water and needles");
-            _atlasPhoenixAdapter.RaiseEvent("BuildCactus", "materialsShipped");
-        }
+        public void SupplyMaterials() => _warehouseAdapter.SupplyMaterials("BuildCactus", "water and needles");
 
         private readonly IWarehouseAdapter _warehouseAdapter;
-        private readonly IAtlasPhoenixAdapter _atlasPhoenixAdapter;
     }
 }

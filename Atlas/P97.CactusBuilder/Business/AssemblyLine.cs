@@ -1,5 +1,6 @@
 ﻿using P97.CactusBuilder.Business.Surface.Interfaces;
-using P97.CactusBuilder.Proxy;
+using P97.Display.Adapter.Surface.Interfaces;
+using P97.Warehouse.Adapter.Surface.Interfaces;
 using System.Threading.Tasks;
 
 namespace P97.CactusBuilder.Business
@@ -15,7 +16,7 @@ namespace P97.CactusBuilder.Business
         public void BuildCactus()
         {
             string cactus = DrawCactus(Task.Run(async () => await _warehouseAdapter.GetMaterialsAsync()).Result);
-            _displayAdapter.SetDisplay($"\"{cactus.Replace("\r\n", "\\n").Replace("\n", "\\n").Replace("\\", "\\\\")}\"");
+            _displayAdapter.SetDisplay(cactus.Replace("\r\n", "\\n").Replace("\n", "\\n").Replace("\\", "\\\\"));
         }
 
         private static string DrawCactus(string materials)

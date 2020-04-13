@@ -1,4 +1,6 @@
-﻿using P97.Atlas.Surface.Dtos;
+﻿using Newtonsoft.Json;
+using P97.Atlas.Surface.Definitions;
+using P97.Atlas.Surface.Dtos;
 using System.Net.Http;
 using System.Text;
 
@@ -17,12 +19,9 @@ namespace P97.Atlas.States.Sapporo.Proxy
             _httpClient.PostAsync(
                 _url,
                 new StringContent(
-                    $@"{{
-                        ""Context"": ""{evt.Context}"",
-                        ""EventType"": ""{evt.EventType}""
-                    }}",
+                    JsonConvert.SerializeObject(evt),
                     Encoding.UTF8,
-                    "application/json"
+                    MediaTypes.ApplicationJson
                 )
             );
         }

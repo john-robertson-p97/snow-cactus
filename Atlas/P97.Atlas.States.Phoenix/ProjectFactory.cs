@@ -6,7 +6,7 @@ using System.Net.Http;
 namespace P97.Atlas.States.Phoenix
 {
     /// <summary>
-    ///     The overall factory class for the <see cref="Lib"/> project.
+    ///     The overall factory class for the <see cref="Phoenix"/> project.
     /// </summary>
     public sealed class ProjectFactory
     {

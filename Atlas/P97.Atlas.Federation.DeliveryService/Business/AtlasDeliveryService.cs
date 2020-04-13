@@ -1,4 +1,6 @@
-﻿using P97.Atlas.Federation.DeliveryService.Business.Surface.Interfaces;
+﻿using Newtonsoft.Json;
+using P97.Atlas.Federation.DeliveryService.Business.Surface.Interfaces;
+using P97.Atlas.Surface.Definitions;
 using P97.Atlas.Surface.Dtos;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -17,12 +19,9 @@ namespace P97.Atlas.Federation.DeliveryService.Business
                 _httpClient.PostAsync(
                     _addresses[atlasType],
                     new StringContent(
-                        $@"{{
-                            ""Context"": ""{evt.Context}"",
-                            ""EventType"": ""{evt.EventType}""
-                        }}",
+                        JsonConvert.SerializeObject(evt),
                         Encoding.UTF8,
-                        "application/json"
+                        MediaTypes.ApplicationJson
                     )
                 );
             }

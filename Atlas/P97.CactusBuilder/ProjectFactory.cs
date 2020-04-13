@@ -1,12 +1,12 @@
 ﻿using P97.CactusBuilder.Business;
 using P97.CactusBuilder.Business.Surface.Interfaces;
-using P97.CactusBuilder.Proxy;
-using System.Net.Http;
+using P97.Display.Adapter.Surface.Interfaces;
+using P97.Warehouse.Adapter.Surface.Interfaces;
 
 namespace P97.CactusBuilder
 {
     /// <summary>
-    ///     The overall factory class for the <see cref="Lib"/> project.
+    ///     The overall factory class for the <see cref="CactusBuilder"/> project.
     /// </summary>
     public sealed class ProjectFactory
     {
@@ -16,14 +16,16 @@ namespace P97.CactusBuilder
         /// <returns>
         ///     A newly created instance of <see cref="IAssemblyLine"/>.
         /// </returns>
-        public IAssemblyLine NewAssemblyLine()
-        {
-            return new AssemblyLine(
-                new WarehouseAdapter(_httpClient, "http://warehouse-microservice"),
-                new DisplayAdapter(_httpClient, "http://display-microservice")
-            );
-        }
-
-        private readonly HttpClient _httpClient = new HttpClient();
+        /// <param name="warehouseAdapter">
+        ///     An instance of <see cref="IWarehouseAdapter"/>.
+        /// </param>
+        /// <param name="displayAdapter">
+        ///     An instance of <see cref="IDisplayAdapter"/>.
+        /// </param>
+        /// <returns>
+        ///     A newly created instance of <see cref="IAssemblyLine"/>.
+        /// </returns>
+        public IAssemblyLine NewAssemblyLine(IWarehouseAdapter warehouseAdapter, IDisplayAdapter displayAdapter)
+            => new AssemblyLine(warehouseAdapter, displayAdapter);
     }
 }

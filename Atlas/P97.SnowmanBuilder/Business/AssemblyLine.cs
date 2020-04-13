@@ -1,5 +1,6 @@
-﻿using P97.SnowmanBuilder.Business.Surface.Interfaces;
-using P97.SnowmanBuilder.Proxy;
+﻿using P97.Display.Adapter.Surface.Interfaces;
+using P97.SnowmanBuilder.Business.Surface.Interfaces;
+using P97.Warehouse.Adapter.Surface.Interfaces;
 using System.Threading.Tasks;
 
 namespace P97.SnowmanBuilder.Business

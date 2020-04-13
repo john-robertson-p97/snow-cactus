@@ -3,7 +3,7 @@
 namespace P97.Warehouse
 {
     /// <summary>
-    ///     The overall factory class for the <see cref="P97.Warehouse"/> project.
+    ///     The overall factory class for the <see cref="Warehouse"/> project.
     /// </summary>
     public sealed class ProjectFactory
     {

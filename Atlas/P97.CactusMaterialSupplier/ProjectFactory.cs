@@ -1,27 +1,26 @@
-﻿using P97.CactusMaterialSupplier.Business.Surface.Interfaces;
-using P97.CactusMaterialSupplier.Proxy;
+﻿using P97.Atlas.States.Phoenix.Adapters;
+using P97.CactusMaterialSupplier.Business.Surface.Interfaces;
+using P97.Warehouse.Adapter.Surface.Interfaces;
 using System.Net.Http;
 
 namespace P97.CactusMaterialSupplier
 {
     /// <summary>
-    ///     The overall factory class for the <see cref="P97.CactusMaterialSupplier"/> project.
+    ///     The overall factory class for the <see cref="CactusMaterialSupplier"/> project.
     /// </summary>
     public sealed class ProjectFactory
     {
         /// <summary>
         ///     Creates a new instance of <see cref="ICactusMaterialSupplier"/>.
         /// </summary>
+        /// <param name="warehouseAdapter">
+        ///     An instance of <see cref="IWarehouseAdapter"/>.
+        /// </param>
         /// <returns>
         ///     A newly created instance of <see cref="ICactusMaterialSupplier"/>.
         /// </returns>
-        public ICactusMaterialSupplier NewCactusMaterialSupplier()
-        {
-            return new Business.CactusMaterialSupplier(
-                new WarehouseAdapter(_httpClient, "http://warehouse-microservice"),
-                new AtlasPhoenixAdapter(_httpClient, "http://atlas-phoenix-microservice")
-            );
-        }
+        public ICactusMaterialSupplier NewCactusMaterialSupplier(IWarehouseAdapter warehouseAdapter) =>
+            new Business.CactusMaterialSupplier(warehouseAdapter);
 
         private readonly HttpClient _httpClient = new HttpClient();
     }

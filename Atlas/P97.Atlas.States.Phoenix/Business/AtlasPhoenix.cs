@@ -1,4 +1,5 @@
 ﻿using P97.Atlas.States.Phoenix.Business.Surface.Interfaces;
+using P97.Atlas.States.Phoenix.Definitions;
 using P97.Atlas.States.Phoenix.Proxy;
 using P97.Atlas.Surface.Dtos;
 
@@ -14,7 +15,7 @@ namespace P97.Atlas.States.Phoenix.Business
 
         public void HandleEvent(EventDto evt)
         {
-            if (evt.EventType == "materialsShipped")
+            if (evt.EventType == EventTypes.MaterialsShipped)
             {
                 _cactusBuilderAdapter.BuildCactus();
             }
