@@ -13,8 +13,8 @@ namespace P97.SnowmanBuilder.Microservice.AtlasSapporo.Controllers
     {
         static BuildSnowmanController()
         {
-            var adapterFactory = new Atlas.States.Sapporo.Adapters.ProjectFactory();
-            _assemblyLine = new ProjectFactory().NewAssemblyLine(adapterFactory.NewWarehouseAdapter(), adapterFactory.NewDisplayAdapter());
+            var projectFactory = new Atlas.Federation.BaseAdapters.ProjectFactory();
+            _assemblyLine = new ProjectFactory().NewAssemblyLine(projectFactory.NewWarehouseAdapter(), projectFactory.NewDisplayAdapter());
         }
 
         /// <summary>

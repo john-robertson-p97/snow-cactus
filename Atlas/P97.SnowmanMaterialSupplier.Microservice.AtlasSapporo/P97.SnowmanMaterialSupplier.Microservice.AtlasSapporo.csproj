@@ -14,7 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\P97.Atlas.States.Sapporo.Adapters\P97.Atlas.States.Sapporo.Adapters.csproj" />
+    <ProjectReference Include="..\P97.SnowmanMaterialSupplier.AtlasSapporo.Surface\P97.SnowmanMaterialSupplier.AtlasSapporo.Surface.csproj" />
+    <ProjectReference Include="..\P97.SnowmanMaterialSupplier.AtlasSapporo\P97.SnowmanMaterialSupplier.AtlasSapporo.csproj" />
     <ProjectReference Include="..\P97.SnowmanMaterialSupplier.Surface\P97.SnowmanMaterialSupplier.Surface.csproj" />
     <ProjectReference Include="..\P97.SnowmanMaterialSupplier\P97.SnowmanMaterialSupplier.csproj" />
   </ItemGroup>

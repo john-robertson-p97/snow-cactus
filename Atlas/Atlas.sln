@@ -55,10 +55,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P97.Atlas.Federation.Delive
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P97.Atlas.Federation.DeliveryService.Microservice", "P97.Atlas.Federation.DeliveryService.Microservice\P97.Atlas.Federation.DeliveryService.Microservice.csproj", "{75ED67B5-8667-4F7B-A584-D7DAAFB9E73F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P97.Atlas.States.Phoenix.Adapters", "P97.Atlas.States.Phoenix.Adapters\P97.Atlas.States.Phoenix.Adapters.csproj", "{F7A80381-2EE3-4F35-9815-B7C7886FFDE0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P97.Atlas.States.Sapporo.Adapters", "P97.Atlas.States.Sapporo.Adapters\P97.Atlas.States.Sapporo.Adapters.csproj", "{4FD380C0-0B8B-4AC3-AF24-0580727D5EF0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P97.SnowmanMaterialSupplier.Microservice.AtlasSapporo", "P97.SnowmanMaterialSupplier.Microservice.AtlasSapporo\P97.SnowmanMaterialSupplier.Microservice.AtlasSapporo.csproj", "{E30F3161-B55E-413A-B591-E62E1D34A1CD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P97.SnowmanBuilder.Microservice.AtlasSapporo", "P97.SnowmanBuilder.Microservice.AtlasSapporo\P97.SnowmanBuilder.Microservice.AtlasSapporo.csproj", "{2866C9BC-5B8D-4B9A-B34E-47FB3AF2BEC9}"
@@ -67,7 +63,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P97.CactusMaterialSupplier.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P97.CactusBuilder.Microservice.AtlasPhoenix", "P97.CactusBuilder.Microservice.AtlasPhoenix\P97.CactusBuilder.Microservice.AtlasPhoenix.csproj", "{7C940E0A-8994-4438-B8C4-9B8A8921BF93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P97.Atlas.Federation.BaseAdapters", "P97.Atlas.Federation.BaseAdapters\P97.Atlas.Federation.BaseAdapters.csproj", "{72E2CF5D-F759-4BEF-9971-84F143BD3142}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P97.Atlas.Federation.BaseAdapters", "P97.Atlas.Federation.BaseAdapters\P97.Atlas.Federation.BaseAdapters.csproj", "{72E2CF5D-F759-4BEF-9971-84F143BD3142}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P97.CactusMaterialSupplier.AtlasPhoenix", "P97.CactusMaterialSupplier.AtlasPhoenix\P97.CactusMaterialSupplier.AtlasPhoenix.csproj", "{78C6B157-F9D7-4961-BAA3-03C0740B4582}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P97.CactusMaterialSupplier.AtlasPhoenix.Surface", "P97.CactusMaterialSupplier.AtlasPhoenix.Surface\P97.CactusMaterialSupplier.AtlasPhoenix.Surface.csproj", "{E449CE1C-E37C-462C-8C06-C6995F204F51}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P97.SnowmanMaterialSupplier.AtlasSapporo", "P97.SnowmanMaterialSupplier.AtlasSapporo\P97.SnowmanMaterialSupplier.AtlasSapporo.csproj", "{0BF6018E-2515-4E33-A814-70DFFDCA0DD2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P97.SnowmanMaterialSupplier.AtlasSapporo.Surface", "P97.SnowmanMaterialSupplier.AtlasSapporo.Surface\P97.SnowmanMaterialSupplier.AtlasSapporo.Surface.csproj", "{3582BF4D-A306-4F59-9E65-20A610161061}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -179,14 +183,6 @@ Global
 		{75ED67B5-8667-4F7B-A584-D7DAAFB9E73F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75ED67B5-8667-4F7B-A584-D7DAAFB9E73F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75ED67B5-8667-4F7B-A584-D7DAAFB9E73F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F7A80381-2EE3-4F35-9815-B7C7886FFDE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F7A80381-2EE3-4F35-9815-B7C7886FFDE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F7A80381-2EE3-4F35-9815-B7C7886FFDE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F7A80381-2EE3-4F35-9815-B7C7886FFDE0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4FD380C0-0B8B-4AC3-AF24-0580727D5EF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FD380C0-0B8B-4AC3-AF24-0580727D5EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4FD380C0-0B8B-4AC3-AF24-0580727D5EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4FD380C0-0B8B-4AC3-AF24-0580727D5EF0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E30F3161-B55E-413A-B591-E62E1D34A1CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E30F3161-B55E-413A-B591-E62E1D34A1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E30F3161-B55E-413A-B591-E62E1D34A1CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -207,6 +203,22 @@ Global
 		{72E2CF5D-F759-4BEF-9971-84F143BD3142}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72E2CF5D-F759-4BEF-9971-84F143BD3142}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72E2CF5D-F759-4BEF-9971-84F143BD3142}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78C6B157-F9D7-4961-BAA3-03C0740B4582}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78C6B157-F9D7-4961-BAA3-03C0740B4582}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78C6B157-F9D7-4961-BAA3-03C0740B4582}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78C6B157-F9D7-4961-BAA3-03C0740B4582}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E449CE1C-E37C-462C-8C06-C6995F204F51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E449CE1C-E37C-462C-8C06-C6995F204F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E449CE1C-E37C-462C-8C06-C6995F204F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E449CE1C-E37C-462C-8C06-C6995F204F51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BF6018E-2515-4E33-A814-70DFFDCA0DD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BF6018E-2515-4E33-A814-70DFFDCA0DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BF6018E-2515-4E33-A814-70DFFDCA0DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BF6018E-2515-4E33-A814-70DFFDCA0DD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3582BF4D-A306-4F59-9E65-20A610161061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3582BF4D-A306-4F59-9E65-20A610161061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3582BF4D-A306-4F59-9E65-20A610161061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3582BF4D-A306-4F59-9E65-20A610161061}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

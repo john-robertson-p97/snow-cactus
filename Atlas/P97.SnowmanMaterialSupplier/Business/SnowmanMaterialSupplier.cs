@@ -7,7 +7,7 @@ namespace P97.SnowmanMaterialSupplier.Business
     {
         internal SnowmanMaterialSupplier(IWarehouseAdapter warehouseAdapter) => _warehouseAdapter = warehouseAdapter;
 
-        public void SupplyMaterials(string context) => _warehouseAdapter.SupplyMaterials(context, "snow");
+        public void SupplyMaterials() => _warehouseAdapter.SupplyMaterials("snow");
 
         private readonly IWarehouseAdapter _warehouseAdapter;
     }

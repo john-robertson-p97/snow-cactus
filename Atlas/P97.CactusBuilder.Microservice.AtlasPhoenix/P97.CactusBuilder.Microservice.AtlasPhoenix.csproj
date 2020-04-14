@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\P97.Atlas.States.Phoenix.Adapters\P97.Atlas.States.Phoenix.Adapters.csproj" />
+    <ProjectReference Include="..\P97.Atlas.Federation.BaseAdapters\P97.Atlas.Federation.BaseAdapters.csproj" />
     <ProjectReference Include="..\P97.CactusBuilder.Surface\P97.CactusBuilder.Surface.csproj" />
     <ProjectReference Include="..\P97.CactusBuilder\P97.CactusBuilder.csproj" />
   </ItemGroup>

@@ -13,8 +13,8 @@ namespace P97.CactusBuilder.Microservice.AtlasPhoenix.Controllers
     {
         static BuildCactusController()
         {
-            var adapterFactory = new Atlas.States.Phoenix.Adapters.ProjectFactory();
-            _assemblyLine = new ProjectFactory().NewAssemblyLine(adapterFactory.NewWarehouseAdapter(), adapterFactory.NewDisplayAdapter());
+            var projectFactory = new Atlas.Federation.BaseAdapters.ProjectFactory();
+            _assemblyLine = new ProjectFactory().NewAssemblyLine(projectFactory.NewWarehouseAdapter(), projectFactory.NewDisplayAdapter());
         }
 
         /// <summary>

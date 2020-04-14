@@ -18,12 +18,9 @@ namespace P97.Warehouse.Adapter.Surface.Interfaces
         /// <summary>
         ///     Supplies materials to the warehouse.
         /// </summary>
-        /// <param name="context">
-        ///     The current workflow context.
-        /// </param>
         /// <param name="materials">
         ///     The materials to be supplied.
         /// </param>
-        void SupplyMaterials(string context, string materials);
+        void SupplyMaterials(string materials);
     }
 }

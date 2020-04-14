@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: atlas-phoenix-microservice
-        image: docker.io/p97akita/atlas-phoenix-microservice:v0.0.0
+        image: docker.io/p97akita/atlas-phoenix-microservice:v0.0.1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80

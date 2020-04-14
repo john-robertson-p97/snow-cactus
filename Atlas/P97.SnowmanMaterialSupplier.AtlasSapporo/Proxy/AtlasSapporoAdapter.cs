@@ -1,17 +1,18 @@
 ﻿using Newtonsoft.Json;
+using P97.Atlas.States.Sapporo.Surface.Definitions;
 using P97.Atlas.Surface.Definitions;
 using P97.Atlas.Surface.Dtos;
 using System.Net.Http;
 using System.Text;
 
-namespace P97.Atlas.States.Phoenix.Adapters
+namespace P97.SnowmanMaterialSupplier.AtlasSapporo.Proxy
 {
-    internal sealed class AtlasPhoenixAdapter : IAtlasPhoenixAdapter
+    internal sealed class AtlasSapporoAdapter : IAtlasSapporoAdapter
     {
-        internal AtlasPhoenixAdapter(HttpClient httpClient, string domain)
+        internal AtlasSapporoAdapter(HttpClient httpClient, string domain)
         {
             _httpClient = httpClient;
-            _url = domain + (domain.EndsWith("/") ? "" : "/") + "api/events";
+            _url = domain + (domain.EndsWith("/") ? "" : "/") + Routes.Events;
         }
 
         public void RaiseEvent(EventDto evt)

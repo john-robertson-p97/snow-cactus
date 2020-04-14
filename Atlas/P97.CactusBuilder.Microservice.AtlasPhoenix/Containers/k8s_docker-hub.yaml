@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: cactusbuilder-microservice
-        image: docker.io/p97akita/cactusbuilder-microservice:v0.0.0
+        image: docker.io/p97akita/cactusbuilder-microservice:v0.0.1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80

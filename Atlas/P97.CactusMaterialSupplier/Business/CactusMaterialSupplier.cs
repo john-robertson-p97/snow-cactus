@@ -1,6 +1,4 @@
-﻿using P97.Atlas.States.Phoenix.Adapters;
-using P97.Atlas.Surface.Dtos;
-using P97.CactusMaterialSupplier.Business.Surface.Interfaces;
+﻿using P97.CactusMaterialSupplier.Business.Surface.Interfaces;
 using P97.Warehouse.Adapter.Surface.Interfaces;
 
 namespace P97.CactusMaterialSupplier.Business
@@ -9,7 +7,7 @@ namespace P97.CactusMaterialSupplier.Business
     {
         internal CactusMaterialSupplier(IWarehouseAdapter warehouseAdapter) => _warehouseAdapter = warehouseAdapter;
 
-        public void SupplyMaterials() => _warehouseAdapter.SupplyMaterials("BuildCactus", "water and needles");
+        public void SupplyMaterials() => _warehouseAdapter.SupplyMaterials("water and needles");
 
         private readonly IWarehouseAdapter _warehouseAdapter;
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using P97.SnowmanMaterialSupplier.Business.Surface.Interfaces;
+using P97.Atlas.Surface.Dtos;
+using P97.SnowmanMaterialSupplier.AtlasSapporo.Business.Surface.Interfaces;
 using P97.SnowmanMaterialSupplier.Microservice.Surface.Definitions;
 
 namespace P97.SnowmanMaterialSupplier.Microservice.Controllers
@@ -14,17 +15,18 @@ namespace P97.SnowmanMaterialSupplier.Microservice.Controllers
     {
         static SupplyMaterialsController()
         {
-            _snowmanMaterialSupplier = new ProjectFactory().NewSnowmanMaterialSupplier(
-                new Atlas.States.Sapporo.Adapters.ProjectFactory().NewWarehouseAdapter()
-            );
+            _atlasSapporoSnowmanMaterialSupplier =
+                    new SnowmanMaterialSupplier.AtlasSapporo.ProjectFactory().NewAtlasSapporoSnowmanMaterialSupplier(
+                        new Atlas.Federation.BaseAdapters.ProjectFactory().NewWarehouseAdapter()
+                    );
         }
 
         /// <summary>
         ///     Supplies snowman materials to the Warehouse service.
         /// </summary>
         [HttpPost]
-        public void Post([FromBody] string context) => _snowmanMaterialSupplier.SupplyMaterials(context);
+        public void Post([FromBody] ContextDto context) => _atlasSapporoSnowmanMaterialSupplier.SupplyMaterials(context);
 
-        private static readonly ISnowmanMaterialSupplier _snowmanMaterialSupplier;
+        private static readonly IAtlasSapporoSnowmanMaterialSupplier _atlasSapporoSnowmanMaterialSupplier;
     }
 }

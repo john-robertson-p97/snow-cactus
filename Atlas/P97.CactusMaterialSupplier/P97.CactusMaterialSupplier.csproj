@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\P97.Atlas.States.Phoenix.Adapters\P97.Atlas.States.Phoenix.Adapters.csproj" />
     <ProjectReference Include="..\P97.CactusMaterialSupplier.Surface\P97.CactusMaterialSupplier.Surface.csproj" />
     <ProjectReference Include="..\P97.Warehouse.Surface\P97.Warehouse.Surface.csproj" />
   </ItemGroup>

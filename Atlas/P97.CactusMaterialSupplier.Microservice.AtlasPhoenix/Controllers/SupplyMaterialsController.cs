@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using P97.CactusMaterialSupplier.Business.Surface.Interfaces;
+using P97.Atlas.Surface.Definitions;
+using P97.Atlas.Surface.Dtos;
+using P97.CactusMaterialSupplier.AtlasPhoenix.Business.Surface.Interfaces;
 using P97.CactusMaterialSupplier.Microservice.Surface.Definitions;
 
 namespace P97.CactusMaterialSupplier.Microservice.AtlasPhoenix.Controllers
@@ -14,17 +16,19 @@ namespace P97.CactusMaterialSupplier.Microservice.AtlasPhoenix.Controllers
     {
         static SupplyMaterialsController()
         {
-            _cactusMaterialSupplier = new ProjectFactory().NewCactusMaterialSupplier(
-                new Atlas.States.Phoenix.Adapters.ProjectFactory().NewWarehouseAdapter()
-            );
+            _atlasPhoenixCactusMaterialSupplier =
+                    new CactusMaterialSupplier.AtlasPhoenix.ProjectFactory().NewAtlasPhoenixCactusMaterialSupplier(
+                        new Atlas.Federation.BaseAdapters.ProjectFactory().NewWarehouseAdapter()
+                    );
         }
 
         /// <summary>
         ///     Supplies cactus materials to the Warehouse service.
         /// </summary>
         [HttpPost]
-        public void Post() => _cactusMaterialSupplier.SupplyMaterials();
+        public void Post() =>
+            _atlasPhoenixCactusMaterialSupplier.SupplyMaterials(new ContextDto() { ApplicationId = ApplicationIds.BuildCactus });
 
-        private static readonly ICactusMaterialSupplier _cactusMaterialSupplier;
+        private static readonly IAtlasPhoenixCactusMaterialSupplier _atlasPhoenixCactusMaterialSupplier;
     }
 }

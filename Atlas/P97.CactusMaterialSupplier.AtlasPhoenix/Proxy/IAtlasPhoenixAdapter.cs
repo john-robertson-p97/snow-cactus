@@ -1,11 +1,11 @@
 ﻿using P97.Atlas.Surface.Dtos;
 
-namespace P97.Atlas.States.Phoenix.Adapters
+namespace P97.CactusMaterialSupplier.AtlasPhoenix.Proxy
 {
     /// <summary>
     ///     Adapter type for performing communication with Atlas Phoenix.
     /// </summary>
-    public interface IAtlasPhoenixAdapter
+    internal interface IAtlasPhoenixAdapter
     {
         /// <summary>
         ///     Raises an event to Atlas Phoenix.

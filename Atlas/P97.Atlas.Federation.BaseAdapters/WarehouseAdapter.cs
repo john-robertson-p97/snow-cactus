@@ -17,7 +17,7 @@ namespace P97.Atlas.Federation.BaseAdapters
 
         public async Task<string> GetMaterialsAsync() => await _httpClient.GetAsync(_url).Result.Content.ReadAsStringAsync();
 
-        public void SupplyMaterials(string context, string materials)
+        public void SupplyMaterials(string materials)
         {
             Task.Run(async () =>
                 await _httpClient.PutAsync(_url, new StringContent($"\"{materials}\"", Encoding.UTF8, MediaTypes.ApplicationJson))

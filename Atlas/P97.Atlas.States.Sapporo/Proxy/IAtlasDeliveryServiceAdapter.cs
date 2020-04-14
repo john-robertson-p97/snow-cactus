@@ -8,11 +8,14 @@ namespace P97.Atlas.States.Sapporo.Proxy
     internal interface IAtlasDeliveryServiceAdapter
     {
         /// <summary>
-        ///     Routes the event provided to Atlas Phoenix.
+        ///     Sends mail (routes the event provided) to the Atlas type specified.
         /// </summary>
+        /// <param name="atlasType">
+        ///     The Atlas type to which to send the mail (the event).
+        /// </param>
         /// <param name="evt">
         ///     The event to be routed.
         /// </param>
-        void SendToPhoenix(EventDto evt);
+        void SendMail(string atlasType, EventDto evt);
     }
 }

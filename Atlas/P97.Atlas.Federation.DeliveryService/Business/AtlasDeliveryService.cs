@@ -14,17 +14,19 @@ namespace P97.Atlas.Federation.DeliveryService.Business
 
         public void SendToAddress(string atlasType, EventDto evt)
         {
-            if (_addresses.ContainsKey(atlasType))
+            if (!_addresses.ContainsKey(atlasType))
             {
-                _httpClient.PostAsync(
-                    _addresses[atlasType],
-                    new StringContent(
-                        JsonConvert.SerializeObject(evt),
-                        Encoding.UTF8,
-                        MediaTypes.ApplicationJson
-                    )
-                );
+                return;
             }
+
+            _httpClient.PostAsync(
+                _addresses[atlasType],
+                new StringContent(
+                    JsonConvert.SerializeObject(evt),
+                    Encoding.UTF8,
+                    MediaTypes.ApplicationJson
+                )
+            );
         }
 
         private readonly Dictionary<string, string> _addresses = new Dictionary<string, string>();
