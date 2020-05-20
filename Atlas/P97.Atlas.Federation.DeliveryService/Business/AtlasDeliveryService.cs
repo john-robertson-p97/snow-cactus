@@ -1,36 +1,24 @@
-﻿using Newtonsoft.Json;
-using P97.Atlas.Federation.DeliveryService.Business.Surface.Interfaces;
-using P97.Atlas.Surface.Definitions;
-using P97.Atlas.Surface.Dtos;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
+﻿using P97.Atlas.Federation.DeliveryService.Business.Surface.Interfaces;
+using P97.Atlas.Federation.DeliveryService.DataAccess;
+using P97.Atlas.Federation.Surface.Dtos;
+using P97.Microservices.Proxy.Surface.Interfaces;
+using System;
 
 namespace P97.Atlas.Federation.DeliveryService.Business
 {
     internal sealed class AtlasDeliveryService : IAtlasDeliveryService
     {
-        public void RegisterAddress(string atlasType, string address) => _addresses[atlasType] = address;
-
-        public void SendToAddress(string atlasType, EventDto evt)
+        internal AtlasDeliveryService(IMicroserviceProxy microserviceProxy, IAddressDataAccess addressDataAccess)
         {
-            if (!_addresses.ContainsKey(atlasType))
-            {
-                return;
-            }
-
-            _httpClient.PostAsync(
-                _addresses[atlasType],
-                new StringContent(
-                    JsonConvert.SerializeObject(evt),
-                    Encoding.UTF8,
-                    MediaTypes.ApplicationJson
-                )
-            );
+            _microserviceProxy = microserviceProxy;
+            _addressDataAccess = addressDataAccess;
         }
 
-        private readonly Dictionary<string, string> _addresses = new Dictionary<string, string>();
+        public void SendMail(Guid recipientId, InitiatingEventDto mailDto) =>
+            _microserviceProxy.PostAsync(_addressDataAccess.GetAddress(recipientId), mailDto);
 
-        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly IMicroserviceProxy _microserviceProxy;
+
+        private readonly IAddressDataAccess _addressDataAccess;
     }
 }

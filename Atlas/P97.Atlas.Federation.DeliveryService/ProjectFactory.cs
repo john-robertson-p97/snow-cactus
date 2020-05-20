@@ -1,5 +1,6 @@
 ﻿using P97.Atlas.Federation.DeliveryService.Business;
 using P97.Atlas.Federation.DeliveryService.Business.Surface.Interfaces;
+using P97.Atlas.Federation.DeliveryService.DataAccess;
 
 namespace P97.Atlas.Federation.DeliveryService
 {
@@ -14,6 +15,9 @@ namespace P97.Atlas.Federation.DeliveryService
         /// <returns>
         ///     A newly created instance of <see cref="IAtlasDeliveryService"/>.
         /// </returns>
-        public IAtlasDeliveryService NewAtlasDeliveryService() => new AtlasDeliveryService();
+        public IAtlasDeliveryService NewAtlasDeliveryService() =>
+            new AtlasDeliveryService(_projectFactory.NewMicroserviceProxy(), new AddressDataAccess());
+
+        private readonly Microservices.ProjectFactory _projectFactory = new Microservices.ProjectFactory();
     }
 }

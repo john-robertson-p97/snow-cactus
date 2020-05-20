@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: atlas-deliveryservice-microservice
+  name: atlas-deliveryservice
   labels:
-    app: atlas-deliveryservice-microservice
+    app: atlas-deliveryservice
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: atlas-deliveryservice-microservice
+      app: atlas-deliveryservice
   template:
     metadata:
       labels:
-        app: atlas-deliveryservice-microservice
+        app: atlas-deliveryservice
     spec:
       containers:
-      - name: atlas-deliveryservice-microservice
-        image: atlas-deliveryservice-microservice
+      - name: atlas-deliveryservice
+        image: atlas-deliveryservice
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
@@ -24,12 +24,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: atlas-deliveryservice-microservice
+  name: atlas-deliveryservice
 spec:
   type: LoadBalancer
   ports:
   - port: 80
     targetPort: 80
-    nodePort: 30008
+    nodePort: 32000
   selector:
-    app: atlas-deliveryservice-microservice
+    app: atlas-deliveryservice

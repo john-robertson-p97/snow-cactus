@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/events",
+      "launchUrl": "api/0.0/event",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "P97.Atlas.States.Phoenix.Microservice": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/events",
+      "launchUrl": "api/0.0/event",
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snowmanmaterialsupplier
+  labels:
+    app: snowmanmaterialsupplier
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: snowmanmaterialsupplier
+  template:
+    metadata:
+      labels:
+        app: snowmanmaterialsupplier
+    spec:
+      containers:
+      - name: snowmanmaterialsupplier
+        image: docker.io/p97akita/snowmanmaterialsupplier:v0.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: snowmanmaterialsupplier
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 31003
+  selector:
+    app: snowmanmaterialsupplier

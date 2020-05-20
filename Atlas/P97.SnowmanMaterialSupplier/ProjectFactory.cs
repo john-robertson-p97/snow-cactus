@@ -1,6 +1,4 @@
 ﻿using P97.SnowmanMaterialSupplier.Business.Surface.Interfaces;
-using P97.Warehouse.Adapter.Surface.Interfaces;
-using System.Net.Http;
 
 namespace P97.SnowmanMaterialSupplier
 {
@@ -12,15 +10,12 @@ namespace P97.SnowmanMaterialSupplier
         /// <summary>
         ///     Creates a new instance of <see cref="ISnowmanMaterialSupplier"/>.
         /// </summary>
-        /// <param name="warehouseAdapter">
-        ///     An instance of <see cref="IWarehouseAdapter"/>.
-        /// </param>
         /// <returns>
         ///     A newly created instance of <see cref="ISnowmanMaterialSupplier"/>.
         /// </returns>
-        public ISnowmanMaterialSupplier NewSnowmanMaterialSupplier(IWarehouseAdapter warehouseAdapter) =>
-            new Business.SnowmanMaterialSupplier(warehouseAdapter);
+        public ISnowmanMaterialSupplier NewSnowmanMaterialSupplier() =>
+            new Business.SnowmanMaterialSupplier(_microservicesFactory.NewMicroserviceProxy(), _microservicesFactory.NewEventRaiser());
 
-        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly Microservices.ProjectFactory _microservicesFactory = new Microservices.ProjectFactory();
     }
 }

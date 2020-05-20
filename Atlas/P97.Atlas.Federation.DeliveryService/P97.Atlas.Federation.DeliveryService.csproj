@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\P97.Atlas.Federation.DeliveryService.Surface\P97.Atlas.Federation.DeliveryService.Surface.csproj" />
+    <ProjectReference Include="..\P97.Microservices\P97.Microservices.csproj" />
   </ItemGroup>
 
 </Project>

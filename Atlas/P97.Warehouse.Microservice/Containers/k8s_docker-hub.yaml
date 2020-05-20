@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: warehouse-microservice
+  name: warehouse
   labels:
-    app: warehouse-microservice
+    app: warehouse
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: warehouse-microservice
+      app: warehouse
   template:
     metadata:
       labels:
-        app: warehouse-microservice
+        app: warehouse
     spec:
       containers:
-      - name: warehouse-microservice
-        image: docker.io/p97akita/warehouse-microservice:v0.0.1
+      - name: warehouse
+        image: docker.io/p97akita/warehouse:v0.0.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
@@ -24,12 +24,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: warehouse-microservice
+  name: warehouse
 spec:
   type: LoadBalancer
   ports:
   - port: 80
     targetPort: 80
-    nodePort: 30000
+    nodePort: 30001
   selector:
-    app: warehouse-microservice
+    app: warehouse

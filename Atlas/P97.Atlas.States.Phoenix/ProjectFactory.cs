@@ -1,7 +1,6 @@
 ﻿using P97.Atlas.States.Phoenix.Business;
 using P97.Atlas.States.Phoenix.Business.Surface.Interfaces;
-using P97.Atlas.States.Phoenix.Proxy;
-using System.Net.Http;
+using P97.Atlas.States.Phoenix.DataAccess;
 
 namespace P97.Atlas.States.Phoenix
 {
@@ -16,14 +15,13 @@ namespace P97.Atlas.States.Phoenix
         /// <returns>
         ///     A newly created instance of <see cref="IAtlasPhoenix"/>.
         /// </returns>
-        public IAtlasPhoenix NewAtlasPhoenix()
-        {
-            return new AtlasPhoenix(
-                new CactusBuilderAdapter(_httpClient, "http://cactusbuilder-microservice"),
-                new CactusMaterialSupplierAdapter(_httpClient, "http://cactusmaterialsupplier-microservice")
-            );
-        }
+        public IAtlasPhoenix NewAtlasPhoenix() => new AtlasPhoenix(
+            _projectFactory.NewMicroserviceProxy(),
+            new WorkflowDataAccess(),
+            new ContextDataAccess(),
+            new EventLogBusiness(new EventLogDataAccess())
+        );
 
-        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly Microservices.ProjectFactory _projectFactory = new Microservices.ProjectFactory();
     }
 }

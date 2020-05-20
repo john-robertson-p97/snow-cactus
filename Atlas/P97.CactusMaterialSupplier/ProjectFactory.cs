@@ -1,6 +1,4 @@
 ﻿using P97.CactusMaterialSupplier.Business.Surface.Interfaces;
-using P97.Warehouse.Adapter.Surface.Interfaces;
-using System.Net.Http;
 
 namespace P97.CactusMaterialSupplier
 {
@@ -12,15 +10,12 @@ namespace P97.CactusMaterialSupplier
         /// <summary>
         ///     Creates a new instance of <see cref="ICactusMaterialSupplier"/>.
         /// </summary>
-        /// <param name="warehouseAdapter">
-        ///     An instance of <see cref="IWarehouseAdapter"/>.
-        /// </param>
         /// <returns>
         ///     A newly created instance of <see cref="ICactusMaterialSupplier"/>.
         /// </returns>
-        public ICactusMaterialSupplier NewCactusMaterialSupplier(IWarehouseAdapter warehouseAdapter) =>
-            new Business.CactusMaterialSupplier(warehouseAdapter);
+        public ICactusMaterialSupplier NewCactusMaterialSupplier() =>
+            new Business.CactusMaterialSupplier(_microservicesFactory.NewMicroserviceProxy(), _microservicesFactory.NewEventRaiser());
 
-        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly Microservices.ProjectFactory _microservicesFactory = new Microservices.ProjectFactory();
     }
 }

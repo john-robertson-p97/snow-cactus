@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: atlas-phoenix-microservice
+  name: atlas-phoenix
   labels:
-    app: atlas-phoenix-microservice
+    app: atlas-phoenix
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: atlas-phoenix-microservice
+      app: atlas-phoenix
   template:
     metadata:
       labels:
-        app: atlas-phoenix-microservice
+        app: atlas-phoenix
     spec:
       containers:
-      - name: atlas-phoenix-microservice
-        image: atlas-phoenix-microservice
+      - name: atlas-phoenix
+        image: atlas-phoenix
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
@@ -24,12 +24,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: atlas-phoenix-microservice
+  name: atlas-phoenix
 spec:
   type: LoadBalancer
   ports:
   - port: 80
     targetPort: 80
-    nodePort: 30004
+    nodePort: 32100
   selector:
-    app: atlas-phoenix-microservice
+    app: atlas-phoenix

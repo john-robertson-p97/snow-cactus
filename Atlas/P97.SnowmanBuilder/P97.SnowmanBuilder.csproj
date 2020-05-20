@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\P97.Display.Surface\P97.Display.Surface.csproj" />
+    <ProjectReference Include="..\P97.Microservices.Surface\P97.Microservices.Surface.csproj" />
+    <ProjectReference Include="..\P97.Microservices\P97.Microservices.csproj" />
     <ProjectReference Include="..\P97.SnowmanBuilder.Surface\P97.SnowmanBuilder.Surface.csproj" />
     <ProjectReference Include="..\P97.Warehouse.Surface\P97.Warehouse.Surface.csproj" />
   </ItemGroup>

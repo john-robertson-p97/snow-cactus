@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/warehouse",
+      "launchUrl": "api/0.0/warehouse",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "P97.Warehouse.Microservice": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/warehouse",
+      "launchUrl": "api/0.0/warehouse",
       "applicationUrl": "http://localhost:5000/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

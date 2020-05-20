@@ -1,7 +1,6 @@
 ﻿using P97.Atlas.States.Sapporo.Business;
-using P97.Atlas.States.Sapporo.Proxy;
-using P97.Atlas.States.Sapporo.Surface.Interfaces;
-using System.Net.Http;
+using P97.Atlas.States.Sapporo.Business.Surface.Interfaces;
+using P97.Atlas.States.Sapporo.DataAccess;
 
 namespace P97.Atlas.States.Sapporo
 {
@@ -19,12 +18,13 @@ namespace P97.Atlas.States.Sapporo
         public IAtlasSapporo NewAtlasSapporo()
         {
             return new AtlasSapporo(
-                new SnowmanMaterialSupplierAdapter(_httpClient, "http://snowmanmaterialsupplier-microservice"),
-                new SnowmanBuilderAdapter(_httpClient, "http://snowmanbuilder-microservice"),
-                new AtlasDeliveryServiceAdapter(_httpClient, "http://atlas-deliveryservice-microservice")
+                _projectFactory.NewMicroserviceProxy(),
+                new WorkflowDataAccess(),
+                new ContextDataAccess(),
+                new EventLogBusiness(new EventLogDataAccess())
             );
         }
 
-        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly Microservices.ProjectFactory _projectFactory = new Microservices.ProjectFactory();
     }
 }

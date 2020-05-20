@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/address",
+      "launchUrl": "api/0.0/mail",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "P97.Atlas.Federation.DeliveryService.Microservice": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/address",
+      "launchUrl": "api/0.0/mail",
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

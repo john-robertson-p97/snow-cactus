@@ -5,9 +5,10 @@ using P97.Warehouse.Microservice.Surface.Definitions;
 namespace P97.Warehouse.Microservice.Controllers
 {
     /// <summary>
-    ///     The controller for accessing the warehouse.  This is accessed via route <see cref="Routes.Warehouse"/>.
+    ///     The controller for accessing the warehouse.  This is accessed via route <see
+    ///     cref="UriInfo.Routes.Warehouse"/>.
     /// </summary>
-    [Route(Routes.Warehouse)]
+    [Route(UriInfo.Routes.Warehouse)]
     [ApiController]
     public sealed class WarehouseController : ControllerBase
     {

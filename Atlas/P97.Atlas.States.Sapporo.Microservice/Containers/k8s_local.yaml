@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: atlas-sapporo-microservice
+  name: atlas-sapporo
   labels:
-    app: atlas-sapporo-microservice
+    app: atlas-sapporo
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: atlas-sapporo-microservice
+      app: atlas-sapporo
   template:
     metadata:
       labels:
-        app: atlas-sapporo-microservice
+        app: atlas-sapporo
     spec:
       containers:
-      - name: atlas-sapporo-microservice
-        image: atlas-sapporo-microservice
+      - name: atlas-sapporo
+        image: atlas-sapporo
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
@@ -24,12 +24,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: atlas-sapporo-microservice
+  name: atlas-sapporo
 spec:
   type: LoadBalancer
   ports:
   - port: 80
     targetPort: 80
-    nodePort: 30007
+    nodePort: 32101
   selector:
-    app: atlas-sapporo-microservice
+    app: atlas-sapporo

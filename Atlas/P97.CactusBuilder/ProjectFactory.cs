@@ -1,7 +1,5 @@
 ﻿using P97.CactusBuilder.Business;
 using P97.CactusBuilder.Business.Surface.Interfaces;
-using P97.Display.Adapter.Surface.Interfaces;
-using P97.Warehouse.Adapter.Surface.Interfaces;
 
 namespace P97.CactusBuilder
 {
@@ -16,16 +14,11 @@ namespace P97.CactusBuilder
         /// <returns>
         ///     A newly created instance of <see cref="IAssemblyLine"/>.
         /// </returns>
-        /// <param name="warehouseAdapter">
-        ///     An instance of <see cref="IWarehouseAdapter"/>.
-        /// </param>
-        /// <param name="displayAdapter">
-        ///     An instance of <see cref="IDisplayAdapter"/>.
-        /// </param>
         /// <returns>
         ///     A newly created instance of <see cref="IAssemblyLine"/>.
         /// </returns>
-        public IAssemblyLine NewAssemblyLine(IWarehouseAdapter warehouseAdapter, IDisplayAdapter displayAdapter)
-            => new AssemblyLine(warehouseAdapter, displayAdapter);
+        public IAssemblyLine NewAssemblyLine() => new AssemblyLine(_microservicesFactory.NewMicroserviceProxy());
+
+        private readonly Microservices.ProjectFactory _microservicesFactory = new Microservices.ProjectFactory();
     }
 }

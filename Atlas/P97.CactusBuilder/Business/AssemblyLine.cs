@@ -1,22 +1,24 @@
 ﻿using P97.CactusBuilder.Business.Surface.Interfaces;
-using P97.Display.Adapter.Surface.Interfaces;
-using P97.Warehouse.Adapter.Surface.Interfaces;
-using System.Threading.Tasks;
+using P97.Microservices.Proxy.Surface.Interfaces;
 
 namespace P97.CactusBuilder.Business
 {
     internal sealed class AssemblyLine : IAssemblyLine
     {
-        internal AssemblyLine(IWarehouseAdapter warehouseAdapter, IDisplayAdapter displayAdapter)
-        {
-            _warehouseAdapter = warehouseAdapter;
-            _displayAdapter = displayAdapter;
-        }
+        internal AssemblyLine(IMicroserviceProxy microserviceProxy) => _microserviceProxy = microserviceProxy;
 
         public void BuildCactus()
         {
-            string cactus = DrawCactus(Task.Run(async () => await _warehouseAdapter.GetMaterialsAsync()).Result);
-            _displayAdapter.SetDisplay(cactus.Replace("\r\n", "\\n").Replace("\n", "\\n").Replace("\\", "\\\\"));
+            _microserviceProxy.Put(
+                $"http://{Display.Microservice.Surface.Definitions.UriInfo.ServiceName}/" +
+                        $"{Display.Microservice.Surface.Definitions.UriInfo.Routes.Display}",
+                DrawCactus(
+                    _microserviceProxy.Get(
+                        $"http://{Warehouse.Microservice.Surface.Definitions.UriInfo.ServiceName}/" +
+                                $"{Warehouse.Microservice.Surface.Definitions.UriInfo.Routes.Warehouse}"
+                    ).ReadAsStringAsync().Result
+                )
+            );
         }
 
         private static string DrawCactus(string materials)
@@ -26,6 +28,7 @@ namespace P97.CactusBuilder.Business
             int leftWidth = maxWidth - ((maxWidth - materials.Length) / 2);
             materials = materials.PadLeft(leftWidth, ' ');
             materials = materials.PadRight(maxWidth, ' ');
+
             return "  " +
 $@"        ____
          /    \
@@ -43,7 +46,6 @@ $@"        ____
          |    |";
         }
 
-        private readonly IWarehouseAdapter _warehouseAdapter;
-        private readonly IDisplayAdapter _displayAdapter;
+        private readonly IMicroserviceProxy _microserviceProxy;
     }
 }

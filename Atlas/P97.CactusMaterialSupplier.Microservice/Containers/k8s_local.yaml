@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cactusmaterialsupplier
+  labels:
+    app: cactusmaterialsupplier
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cactusmaterialsupplier
+  template:
+    metadata:
+      labels:
+        app: cactusmaterialsupplier
+    spec:
+      containers:
+      - name: cactusmaterialsupplier
+        image: cactusmaterialsupplier
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cactusmaterialsupplier
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 31001
+  selector:
+    app: cactusmaterialsupplier

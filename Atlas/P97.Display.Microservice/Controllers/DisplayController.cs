@@ -5,9 +5,10 @@ using P97.Display.Microservice.Surface.Definitions;
 namespace P97.Display.Microservice.Controllers
 {
     /// <summary>
-    ///     The controller for accessing the display.  This is accessed via route <see cref="Routes.Display"/>.
+    ///     The controller for accessing the display.  This is accessed via route <see
+    ///     cref="UriInfo.Routes.Display"/>.
     /// </summary>
-    [Route(Routes.Display)]
+    [Route(UriInfo.Routes.Display)]
     [ApiController]
     public class DisplayController : ControllerBase
     {

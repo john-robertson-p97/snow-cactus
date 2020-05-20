@@ -1,22 +1,24 @@
-﻿using P97.Display.Adapter.Surface.Interfaces;
+﻿using P97.Microservices.Proxy.Surface.Interfaces;
 using P97.SnowmanBuilder.Business.Surface.Interfaces;
-using P97.Warehouse.Adapter.Surface.Interfaces;
-using System.Threading.Tasks;
 
 namespace P97.SnowmanBuilder.Business
 {
     internal sealed class AssemblyLine : IAssemblyLine
     {
-        internal AssemblyLine(IWarehouseAdapter warehouseAdapter, IDisplayAdapter displayAdapter)
-        {
-            _warehouseAdapter = warehouseAdapter;
-            _displayAdapter = displayAdapter;
-        }
+        internal AssemblyLine(IMicroserviceProxy microserviceProxy) => _microserviceProxy = microserviceProxy;
 
         public void BuildSnowman()
         {
-            string snowman = DrawSnowman(Task.Run(async () => await _warehouseAdapter.GetMaterialsAsync()).Result);
-            _displayAdapter.SetDisplay(snowman.Replace("\r\n", "\\n").Replace("\n", "\\n").Replace("\\", "\\\\"));
+            _microserviceProxy.Put(
+                $"http://{Display.Microservice.Surface.Definitions.UriInfo.ServiceName}/" +
+                        $"{Display.Microservice.Surface.Definitions.UriInfo.Routes.Display}",
+                DrawSnowman(
+                    _microserviceProxy.Get(
+                        $"http://{Warehouse.Microservice.Surface.Definitions.UriInfo.ServiceName}/" +
+                                $"{Warehouse.Microservice.Surface.Definitions.UriInfo.Routes.Warehouse}"
+                    ).ReadAsStringAsync().Result
+                )
+            );
         }
 
         private static string DrawSnowman(string materials)
@@ -26,6 +28,7 @@ namespace P97.SnowmanBuilder.Business
             int leftWidth = maxWidth - ((maxWidth - materials.Length) / 2);
             materials = materials.PadLeft(leftWidth, ' ');
             materials = materials.PadRight(maxWidth, ' ');
+
             return "   " +
 $@"      ___
         /x x\
@@ -40,7 +43,6 @@ $@"      ___
     \___________/";
         }
 
-        private readonly IWarehouseAdapter _warehouseAdapter;
-        private readonly IDisplayAdapter _displayAdapter;
+        private readonly IMicroserviceProxy _microserviceProxy;
     }
 }

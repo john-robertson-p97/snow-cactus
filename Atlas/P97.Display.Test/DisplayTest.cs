@@ -13,7 +13,7 @@ namespace P97.Display.Test
             Assert.AreEqual(display.Contents, value);
 
             value = "123";
-            //display.Contents = value;
+            display.Contents = value;
             Assert.AreEqual(display.Contents, value);
         }
     }
